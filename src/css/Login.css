@@ -41,6 +41,7 @@
 }
 
 .login-sign-button {
+  cursor: pointer;
   background-color: teal;
   color: white;
   border: 1px solid;
@@ -54,6 +55,7 @@
 }
 
 .login-register-button {
+  cursor: pointer;
   margin-top: 5px;
   width: 100%;
 }

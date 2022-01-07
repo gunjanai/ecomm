@@ -11,7 +11,7 @@ function Checkout() {
       <div className="checkout-left">
         <img
           className="checkout-img"
-          src="https://cdn.w600.comps.canstockphoto.com/black-friday-sale-advertising-banner-clipart-vector_csp73598059.jpg"
+          src="https://www.aadioffer.com/image/cache/catalog/banner2-1920x504.jpg"
           alt="discount image"
         />
         <div className="checkout-title">

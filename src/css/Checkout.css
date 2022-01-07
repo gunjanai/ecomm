@@ -11,7 +11,7 @@
   margin-bottom: 10px;
 }
 
-.checkout-title {
-  margin-left: 10px;
+.checkout-title > h2 {
+  padding-bottom: 8px;
   border-bottom: 1px solid rgb(197, 197, 197);
 }

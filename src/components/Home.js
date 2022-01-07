@@ -1,26 +1,55 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import apiURL from "../config/config";
 import "../css/Home.css";
+import { useStateValue } from "../StateProvider";
+import getApiResponse from "../utils/apiHandler";
 import Product from "./Product";
 
 function Home() {
+  const [products, setProducts] = useState([]);
+  const [{ searchTerm }, dispatch] = useStateValue();
+  const fetchProductData = async () => {
+    try {
+      const productList = await getApiResponse(apiURL);
+      setProducts(productList);
+      console.log(products);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    fetchProductData();
+  }, []);
   return (
     <div>
       <div className="home">
         <div className="home-container">
           <img
             className="home-img"
-            src="https://st4.depositphotos.com/1001941/21877/v/1600/depositphotos_218773320-stock-illustration-website-header-banner-design-discount.jpg"
+            src="https://cdn.shopify.com/s/files/1/0332/3917/1117/files/Product_Banner_1920x500_copy6.jpg?v=1591789167"
           />
           <div className="home-row">
-            <Product
-              title={"Product 1"}
-              price={112}
-              rating={4}
-              image={
-                "https://retailminded.com/wp-content/uploads/2016/03/EN_GreenOlive-1.jpg"
-              }
-            />
-            <Product />
+            {products
+              .filter((product) => {
+                if (searchTerm === "") {
+                  return product;
+                } else {
+                  let returnProduct =
+                    product.title
+                      .toLowerCase()
+                      .indexOf(searchTerm.toLowerCase()) > -1;
+                  return returnProduct;
+                }
+              })
+              .map((product) => (
+                <Product
+                  title={product.title}
+                  price={product.price}
+                  rating={Math.ceil(product.rating.rate)}
+                  image={product.image}
+                />
+              ))}
           </div>
         </div>
       </div>

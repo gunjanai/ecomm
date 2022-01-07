@@ -1,10 +1,12 @@
 .product {
+  position: relative;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: flex-end;
-  margin: 10px;
-  padding: 20px;
+  /* align-items: center; */
+  justify-content: flex-start;
+  /* margin: 10px; */
+  /* padding: 5px; */
+  /* padding-left: 10px; */
   width: 100%;
   max-height: 400px;
   min-width: 100px;
@@ -13,15 +15,21 @@
 }
 
 .product > img {
-  max-height: 200px;
-  width: 100%;
+  padding-top: 20px;
+  align-self: center;
+  max-height: 50%;
+  width: 70%;
   object-fit: contain;
   margin-bottom: 10px;
 }
 
 .product-info {
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
+  margin: 10px;
+  padding-left: 10px;
   height: 100px;
-  margin-bottom: 15px;
 }
 
 .product-price {
@@ -29,6 +37,13 @@
 }
 
 .product > button {
+  position: absolute;
+  bottom: 0;
+  cursor: pointer;
+  align-self: center;
+  width: 100px;
+  margin-bottom: 10px;
+  margin-top: 10px;
   background-color: teal;
   color: white;
   border: 1px solid;

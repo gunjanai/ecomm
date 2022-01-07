@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "../css/Header.css";
 import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
@@ -9,11 +9,20 @@ const imgPath = process.env.PUBLIC_URL;
 
 function Header() {
   const [{ basket, user }, dispatch] = useStateValue();
+  const [searchTerm, setSearchTerm] = useState("");
 
   const handleAuthentication = () => {
     if (user) {
       auth.signOut();
     }
+  };
+
+  const handleSearch = (e) => {
+    setSearchTerm(e.target.value);
+    dispatch({
+      type: "SEARCH",
+      search: searchTerm,
+    });
   };
   return (
     <div className="header">
@@ -21,7 +30,12 @@ function Header() {
         <img className="header-logo" src={`${imgPath}/logoipsum-logo-38.svg`} />
       </Link>
       <div className="header-search">
-        <input className="header-search-input" type="text"></input>
+        <input
+          className="header-search-input"
+          type="text"
+          placeholder="Looking for something specific? Search here..."
+          onChange={handleSearch}
+        ></input>
         <SearchOutlinedIcon className="header-search-icon" />
       </div>
       <div className="header-nav">

@@ -1,6 +1,7 @@
 export const initialState = {
   basket: [],
   user: null,
+  searchTerm: "",
 };
 
 //Selector
@@ -38,6 +39,12 @@ const reducer = (state, action) => {
       return {
         ...state,
         user: action.user,
+      };
+
+    case "SEARCH":
+      return {
+        ...state,
+        searchTerm: action.search,
       };
 
     default:

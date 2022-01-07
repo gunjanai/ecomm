@@ -24,6 +24,7 @@
 }
 
 .checkout-product-info > button {
+  cursor: pointer;
   background-color: teal;
   color: white;
   border: 1px solid;
